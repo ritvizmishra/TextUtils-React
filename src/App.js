@@ -1,51 +1,64 @@
+import { useState } from "react";
 import "./App.css";
+import Navbar from "./Components/Navbar";
+import TextForm from "./Components/TextForm";
+// import Alerts from "./Components/Alerts";
+import About from "./Components/About";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+  const [mode, setMode] = useState("light");
+  // const [alert, setAlert] = useState(null);
+
+  // const showAlert = (message, type) => {
+  //   setAlert({
+  //     message: message,
+  //     type: type,
+  //   });
+  //   setTimeout(() => {
+  //     setAlert(null);
+  //   }, 1500);
+  // };
+
+  const toggleMode = () => {
+    if (mode === "light") {
+      setMode("dark");
+      document.body.style.backgroundColor = "rgb(66,66,66)";
+      // showAlert("Dark Mode has been enabled!", "success");
+      toast.success("Dark Mode has been enabled!", "success");
+    } else {
+      setMode("light");
+      document.body.style.backgroundColor = "white";
+      // showAlert("Light Mode has been enabled!", "success");
+      toast.success("Light Mode has been enabled!", "success");
+    }
+  };
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            TextUtils
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/">
-                  About
-                </a>
-              </li>
-            </ul>
-            <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
-        </div>
-      </nav>
+      <BrowserRouter>
+        <Navbar
+          title="TextUtils"
+          aboutTitle="About Us"
+          mode={mode}
+          toggleMode={toggleMode}
+        />
+        <Routes>
+          <Route exact path="/about" element={<About mode={mode} />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <TextForm heading="Enter your text to covert it: " mode={mode} />
+            }
+          />
+        </Routes>
+
+        <ToastContainer />
+        {/* <Alerts alert={alert}/> */}
+      </BrowserRouter>
     </>
   );
 }
