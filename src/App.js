@@ -27,12 +27,22 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = "rgb(66,66,66)";
       // showAlert("Dark Mode has been enabled!", "success");
-      toast.success("Dark Mode has been enabled!", "success");
+      toast.success("Dark Mode has been enabled!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        pauseOnHover: false,
+        autoClose: 1000,
+        hideProgressBar: true,
+      });
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       // showAlert("Light Mode has been enabled!", "success");
-      toast.success("Light Mode has been enabled!", "success");
+      toast.success("Light Mode has been enabled!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        pauseOnHover: false,
+        autoClose: 1000,
+        hideProgressBar: true,
+      });
     }
   };
 
@@ -55,7 +65,6 @@ function App() {
             }
           />
         </Routes>
-
         <ToastContainer />
         {/* <Alerts alert={alert}/> */}
       </BrowserRouter>

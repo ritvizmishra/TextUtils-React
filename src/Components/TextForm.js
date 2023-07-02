@@ -13,14 +13,24 @@ export default function TextForm(props) {
     let newText = text.toUpperCase();
     setText(newText);
     // props.showAlert("Converted to UpperCase!", "success");
-    toast.success("Converted to UpperCase!", "success");
+    toast.success("Converted to UpperCase!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      pauseOnHover: false,
+      autoClose: 1000,
+      hideProgressBar: true,
+    });
   };
 
   const handleLowerClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
     // props.showAlert("Converted to LowerCase!", "success");
-    toast.success("Converted to LowerCase!", "success");
+    toast.success("Converted to LowerCase!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      pauseOnHover: false,
+      autoClose: 1000,
+      hideProgressBar: true,
+    });
   };
 
   const handleCapClick = () => {
@@ -33,14 +43,24 @@ export default function TextForm(props) {
     let newText = arr.join(" ");
     setText(newText);
     // props.showAlert("Text Capitalized!", "success");
-    toast.success("Text Capitalized!", "success");
+    toast.success("Text Capitalized!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      pauseOnHover: false,
+      autoClose: 1000,
+      hideProgressBar: true,
+    });
   };
 
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
     // props.showAlert("Text Cleared!", "danger");
-    toast.warn("Text Cleared!", "danger")
+    toast.warn("Text Cleared!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      pauseOnHover: false,
+      autoClose: 1000,
+      hideProgressBar: true,
+    });
   };
 
   return (
@@ -64,16 +84,32 @@ export default function TextForm(props) {
             }}
           ></textarea>
         </div>
-        <button className="btn btn-primary mr-2" onClick={handleUpperClick}>
+        <button
+          className="btn btn-primary mr-2 my-2"
+          onClick={handleUpperClick}
+          disabled={text.length === 0}
+        >
           Convert to UpperCase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleLowerClick}>
+        <button
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleLowerClick}
+          disabled={text.length === 0}
+        >
           Convert to LowerCase
         </button>
-        <button className="btn btn-success mx-2" onClick={handleCapClick}>
+        <button
+          className="btn btn-success mx-2 my-2"
+          onClick={handleCapClick}
+          disabled={text.length === 0}
+        >
           Capitalize Text
         </button>
-        <button className="btn btn-danger mx-2" onClick={handleClearClick}>
+        <button
+          className="btn btn-danger mx-2 my-2"
+          onClick={handleClearClick}
+          disabled={text.length === 0}
+        >
           Clear
         </button>
       </div>
@@ -83,8 +119,13 @@ export default function TextForm(props) {
       >
         <h5>Summary: </h5>
         <p>
-          Your text contains {text.split(" ").length - 1} words and{" "}
-          {text.length} characters.
+          Your text contains{" "}
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters.
         </p>
       </div>
       <div
@@ -93,7 +134,7 @@ export default function TextForm(props) {
       >
         <h5>Preview: </h5>
         <p className="border border-success border-2 rounded px-1">
-          {text.length > 0 ? text : "Write something above to preview it here."}
+          {text.length > 0 ? text : "Nothing to preview here."}
         </p>
       </div>
     </>

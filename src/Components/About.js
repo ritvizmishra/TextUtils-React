@@ -1,34 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function About(props) {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
 
-  const [btnText, setBtnText] = useState("Enable Dark Mode");
-
-  const toggleStyleButton = () => {
-    if (myStyle.color === "black") {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "rgb(66, 66, 66)",
-      });
-      setBtnText("Enable Light Mode");
-    } else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setBtnText("Enable Dark Mode");
-    }
+  const myStyle = {
+    color: props.mode === "dark" ? "white" : "black",
+    backgroundColor: props.mode === "dark" ? "rgb(88,88,88)" : "white",
   };
+
   return (
     <>
-      <div style={{color: props.mode === 'light' ? 'black' : 'white'}}>
+      <div style={{color: props.mode === "dark" ? "white" : "black",}}>
         <h2 className="my-3 mx-5">About Us</h2>
       </div>
-      <div className="container my-3 pt-3" style={myStyle}>
+      <div className="container my-3 py-3 rounded" style={myStyle}>
         <div className="accordion" id="accordionExample">
           <div className="accordion-item">
             <h2 className="accordion-header">
@@ -41,7 +25,7 @@ export default function About(props) {
                 aria-controls="collapseOne"
                 style={myStyle}
               >
-                Accordion Item #1
+                Easy to Use
               </button>
             </h2>
             <div
@@ -50,15 +34,11 @@ export default function About(props) {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={myStyle}>
-                <strong>This is the first item's accordion body.</strong> It is
-                shown by default, until the collapse plugin adds the appropriate
-                classes that we use to style each element. These classes control
-                the overall appearance, as well as the showing and hiding via
-                CSS transitions. You can modify any of this with custom CSS or
-                overriding our default variables. It's also worth noting that
-                just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+                <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Optio a eius iusto cupiditate ducimus magnam 
+                quibusdam nostrum porro beatae officia est, animi fuga. Excepturi, debitis vero ipsa accusamus eligendi libero nulla 
+                repudiandae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora dolorem aut atque voluptate vel sed quos, 
+                nesciunt aperiam natus unde vero eaque rem! Perferendis illum consectetur, aliquam sapiente nesciunt magnam deleniti 
+                repellat? <code>lorem ipsum dolor sit.</code>, lorem ipsum dolor sit amet consectetur overflow.
               </div>
             </div>
           </div>
@@ -73,7 +53,7 @@ export default function About(props) {
                 aria-controls="collapseTwo"
                 style={myStyle}
               >
-                Accordion Item #2
+                Various Functions
               </button>
             </h2>
             <div
@@ -82,15 +62,11 @@ export default function About(props) {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={myStyle}>
-                <strong>This is the second item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+              <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Optio a eius iusto cupiditate ducimus magnam 
+                quibusdam nostrum porro beatae officia est, animi fuga. Excepturi, debitis vero ipsa accusamus eligendi libero nulla 
+                repudiandae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora dolorem aut atque voluptate vel sed quos, 
+                nesciunt aperiam natus unde vero eaque rem! Perferendis illum consectetur, aliquam sapiente nesciunt magnam deleniti 
+                repellat? <code>lorem ipsum dolor sit.</code>, lorem ipsum dolor sit amet consectetur overflow.
               </div>
             </div>
           </div>
@@ -105,7 +81,7 @@ export default function About(props) {
                 aria-controls="collapseThree"
                 style={myStyle}
               >
-                Accordion Item #3
+                Browser Compatible
               </button>
             </h2>
             <div
@@ -114,26 +90,15 @@ export default function About(props) {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={myStyle}>
-                <strong>This is the third item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+              <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Optio a eius iusto cupiditate ducimus magnam 
+                quibusdam nostrum porro beatae officia est, animi fuga. Excepturi, debitis vero ipsa accusamus eligendi libero nulla 
+                repudiandae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora dolorem aut atque voluptate vel sed quos, 
+                nesciunt aperiam natus unde vero eaque rem! Perferendis illum consectetur, aliquam sapiente nesciunt magnam deleniti 
+                repellat? <code>lorem ipsum dolor sit.</code>, lorem ipsum dolor sit amet consectetur overflow.
               </div>
             </div>
           </div>
         </div>
-        <button
-          type="button"
-          className="btn btn-primary my-3"
-          onClick={toggleStyleButton}
-        >
-          {btnText}
-        </button>
       </div>
     </>
   );
